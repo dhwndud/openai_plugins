@@ -1,14 +1,14 @@
 openapi: 3.0.1
 info:
-  title: TODO Plugin
+  title: SOMMA Plugin[ElasticDocGPT]
   description: A plugin that allows the user to create and manage a TODO list using ChatGPT. If you do not know the user's username, ask them first before making queries to the plugin. Otherwise, use the username "global".
   version: 'v1'
 servers:
   - url: http://localhost:5003
 paths:
-  /todos/{username}:
+  /search:
     get:
-      operationId: getTodos
+      operationId: search
       summary: Get the list of todos
       parameters:
       - in: path
@@ -63,7 +63,7 @@ paths:
         "200":
           description: OK
 
-components:
+components:         # components: 재 사용 가능한 'object' 들을 모아둔 곳
   schemas:
     getTodosResponse:
       type: object

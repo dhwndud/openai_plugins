@@ -1,9 +1,9 @@
 {
     "schema_version": "v1",
-    "name_for_human": "TODO List (no auth)",
-    "name_for_model": "todo",
-    "description_for_human": "Manage your TODO list. You can add, remove and view your TODOs.",
-    "description_for_model": "Plugin for managing a TODO list, you can add, remove and view your TODOs.",
+    "name_for_human": "SOMMA Plugin (no auth)",
+    "name_for_model": "somma plugin",
+    "description_for_human": "(C)Somma, Inc. All rights reserved.",
+    "description_for_model": "Plugin - 모델이 plugin을 사용 하는 시기를 이해 하기 위한 지침.",
     "auth": {
       "type": "none"
     },
@@ -11,8 +11,8 @@
       "type": "openapi",
       "url": "http://localhost:5003/openapi.yaml"
     },
-    "logo_url": "http://localhost:5003/logo.png",
-    "contact_email": "legal@example.com",
-    "legal_info_url": "http://example.com/legal"
+    "logo_url": "http://localhost:5003/Somma-Signature.png",
+    "contact_email": "wndud5577@gmail.com",
+    "legal_info_url": "http://gmail.com/wndud5577"
   }
   
