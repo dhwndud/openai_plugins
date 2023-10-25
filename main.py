@@ -1,42 +1,48 @@
 import json
 
+import openai
 import quart
 import quart_cors
 from quart import request
 
 app = quart_cors.cors(quart.Quart(__name__), allow_origin="https://chat.openai.com")
 
-# TODO: Keep track of todo's. Does not persist if Python session is restarted.
+openai.api_key = "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"
+model = "gpt-3.5-turbo-0301"
+
+
+#  TODO: Keep track of todo's. Does not persist if Python session is restarted.
+#  할일을 추적 하세요. Python 세션이 다시 시작 되면, 지속 되지 않음.
 _TODOS = {}
 
 
-@app.post("/todos/<string:username>")
-async def add_todo(username):
-    request = await quart.request.get_json(force=True)
-    if username not in _TODOS:
-        _TODOS[username] = []
-    _TODOS[username].append(request["todo"])
-    return quart.Response(response='OK', status=200)
+# @app.post("/todos/<string:username>")
+# async def add_todo(username):
+#     request = await quart.request.get_json(force=True)
+#     if username not in _TODOS:
+#         _TODOS[username] = []
+#     _TODOS[username].append(request["todo_"])
+#     return quart.Response(response='OK', status=200)
 
 
-@app.get("/todos/<string:username>")
-async def get_todos(username):
-    return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
+# @app.get("/todos/<string:username>")
+# async def get_todos(username):
+#     return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
 
 
-@app.delete("/todos/<string:username>")
-async def delete_todo(username):
-    request = await quart.request.get_json(force=True)
-    todo_idx = request["todo_idx"]
-    # fail silently, it's a simple plugin
-    if 0 <= todo_idx < len(_TODOS[username]):
-        _TODOS[username].pop(todo_idx)
-    return quart.Response(response='OK', status=200)
-
+# @app.delete("/todos/<string:username>")
+# async def delete_todo(username):
+#     request = await quart.request.get_json(force=True)
+#     todo_idx = request["todo_idx"]
+#     # fail silently, it's a simple plugin
+#     if 0 <= todo_idx < len(_TODOS[username]):
+#         _TODOS[username].pop(todo_idx)
+#     return quart.Response(response='OK', status=200)
+#
 
 @app.get("/Somma-Signature.png")
 async def plugin_logo():
-    filename = 'logo.png'
+    filename = 'Somma-Signature.png'
     return await quart.send_file(filename, mimetype='image/png')
 
 
@@ -57,7 +63,7 @@ async def openapi_spec():
 
 
 def main():
-    app.run(debug=True, host="localhost", port=5003)
+    app.run(debug=True, host="0.0.0.0", port=5003)
 
 
 if __name__ == "__main__":
